@@ -11,7 +11,7 @@ Apple Foundation Program Extended with Simplon
 # Theme
 Entertainment
 
-replace ![image](https://your-image-url.type) with <img src="https://your-image-url.type" width="100" height="100">
+replace ![image](https://your-image-url.type) with <img src="https://your-image-url.type" width="100" width="200">
 
 <img src="https://user-images.githubusercontent.com/77630883/231756171-9a1d74fc-3e8b-4102-97cc-8b6534a1b74f.png" width="100"> 
 ![Simulator Screen Shot - iPhone 14 - 2023-03-31 at 11 40 07](https://user-images.githubusercontent.com/77630883/231756196-b557ed91-29b4-4171-97c7-caf9f465bd7f.png) 
