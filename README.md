@@ -1,4 +1,4 @@
-# teamher
+# TeamHer
 
 A project in SwiftUI done in a month with 4 other teammates in 2023 March.
 
