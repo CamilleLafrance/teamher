@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Discussion" representedClassName="Discussion" syncable="YES" codeGenerationType="class">
+        <attribute name="discussionType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="discussion" inverseEntity="Message"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="discussions" inverseEntity="User"/>
+    </entity>
+    <entity name="FavoriteGame" representedClassName="FavoriteGame" syncable="YES" codeGenerationType="class">
+        <attribute name="main" optional="YES" attributeType="String"/>
+        <attribute name="review" optional="YES" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="favorites" inverseEntity="Game"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteGames" inverseEntity="User"/>
+    </entity>
+    <entity name="Game" representedClassName="Game" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="genre" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="map" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="numberOfPlayers" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="platform" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteGame" inverseName="game" inverseEntity="FavoriteGame"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameReview" inverseName="game" inverseEntity="GameReview"/>
+    </entity>
+    <entity name="GameReview" representedClassName="GameReview" syncable="YES" codeGenerationType="class">
+        <attribute name="accessibility" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="difficulty" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="reviews" inverseEntity="User"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="reviews" inverseEntity="Game"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Match" representedClassName="Match" syncable="YES" codeGenerationType="class">
+        <attribute name="thumb" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="matchedUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="matchesSent" inverseEntity="User"/>
+        <relationship name="matchingUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="matchesReceived" inverseEntity="User"/>
+    </entity>
+    <entity name="MatchCriteria" representedClassName="MatchCriteria" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="genders" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="personalities" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recommandations" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="matchCriteria" inverseEntity="User"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messagesSent" inverseEntity="User"/>
+        <relationship name="discussion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="messages" inverseEntity="Discussion"/>
+        <relationship name="recipient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messagesReceived" inverseEntity="User"/>
+    </entity>
+    <entity name="Recommandation" representedClassName="Recommandation" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <relationship name="recommandedUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="recommandationsReceived" inverseEntity="User"/>
+        <relationship name="recommandingUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="recommandationsSent" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="alias" optional="YES" attributeType="String"/>
+        <attribute name="banner" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="personality1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="personality2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="personality3" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pronoun" optional="YES" attributeType="String"/>
+        <attribute name="userDescription" optional="YES" attributeType="String"/>
+        <relationship name="discussions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Discussion" inverseName="user" inverseEntity="Discussion"/>
+        <relationship name="favoriteGames" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteGame" inverseName="user" inverseEntity="FavoriteGame"/>
+        <relationship name="matchCriteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MatchCriteria" inverseName="user" inverseEntity="MatchCriteria"/>
+        <relationship name="matchesReceived" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="matchingUser" inverseEntity="Match"/>
+        <relationship name="matchesSent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="matchedUser" inverseEntity="Match"/>
+        <relationship name="messagesReceived" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="recipient" inverseEntity="Message"/>
+        <relationship name="messagesSent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="author" inverseEntity="Message"/>
+        <relationship name="recommandationsReceived" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recommandation" inverseName="recommandedUser" inverseEntity="Recommandation"/>
+        <relationship name="recommandationsSent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recommandation" inverseName="recommandingUser" inverseEntity="Recommandation"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameReview" inverseName="author" inverseEntity="GameReview"/>
+    </entity>
+</model>
